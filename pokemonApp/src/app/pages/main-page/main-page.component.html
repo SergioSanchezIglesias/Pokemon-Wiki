@@ -1,6 +1,9 @@
 <div class="container my-5">
-    <h1>Pokemon Wiki</h1>
-    <hr>
+  <h1>Pokemon Wiki</h1>
+  <hr />
 
-    <input type="text" class="form-control" placeholder="Busca un Pokemon" (input)="onSearch($event)">
+  <app-search-box
+    (onDebounce)="onSearch($event)"
+    placeholder="Busca un Pokemon"
+  ></app-search-box>
 </div>

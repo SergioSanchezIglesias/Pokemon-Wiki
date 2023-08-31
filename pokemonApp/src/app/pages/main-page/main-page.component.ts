@@ -13,11 +13,7 @@ export class MainPageComponent {
 
   constructor(private pokemonService: PokemonService) { }
 
-
-
-  onSearch(term: any): void {
-
-    const name = term.target.value;
+  onSearch(name: string): void {
     
     this.pokemonService.searchPokemonByName(name)
       .subscribe(pokemons => {
