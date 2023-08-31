@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable, catchError, delay, of, tap } from 'rxjs';
-import { PokemonSearch } from 'src/app/interfaces/pokemon.interface';
+import { PokemonInterface } from 'src/app/interfaces/pokemon.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 
@@ -11,13 +10,23 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class MainPageComponent {
 
+  public pokemonSearched?: PokemonInterface;
+
   constructor(private pokemonService: PokemonService) { }
 
   onSearch(name: string): void {
-    
-    this.pokemonService.searchPokemonByName(name)
-      .subscribe(pokemons => {
-        console.log(pokemons);
+
+    const termSearch = name.toLowerCase()
+
+    this.pokemonService.searchPokemonByName(termSearch)
+      .subscribe(({ id, location_area_encounters, name, order, types }) => {
+        this.pokemonSearched = {
+          id: id,
+          location_area_encounters: location_area_encounters,
+          name: name,
+          order: order,
+          types: types,
+        }
       });
   }
 

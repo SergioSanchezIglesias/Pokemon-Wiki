@@ -6,4 +6,8 @@
     (onDebounce)="onSearch($event)"
     placeholder="Busca un Pokemon"
   ></app-search-box>
+
+  <div>
+    <span *ngIf="pokemonSearched">{{ pokemonSearched | json }}</span>
+  </div>
 </div>

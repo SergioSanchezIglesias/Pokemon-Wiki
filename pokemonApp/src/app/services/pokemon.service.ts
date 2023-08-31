@@ -4,7 +4,7 @@ import { Observable, catchError, delay, of, tap } from 'rxjs';
 
 
 import { environments } from 'src/environments/environments';
-import { PokemonSearch } from '../interfaces/pokemon.interface';
+import { PokemonInterface } from '../interfaces/pokemon.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +13,10 @@ export class PokemonService {
 
   constructor(private http: HttpClient) { }
 
-  searchPokemonByName(name: string): Observable<PokemonSearch[]> {
-    return this.http.get<PokemonSearch[]>(`${environments.apiUrl}/pokemon/${name}`)
+  searchPokemonByName(name: string): Observable<PokemonInterface> {
+    return this.http.get<PokemonInterface>(`${environments.apiUrl}/pokemon/${name}`)
       .pipe(
-        catchError(() => of([])),
-        delay(2000),
+        catchError(() => of()),
       );
   }
 }
