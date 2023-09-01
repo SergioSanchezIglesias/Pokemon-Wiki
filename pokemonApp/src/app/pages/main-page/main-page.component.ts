@@ -10,7 +10,8 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class MainPageComponent {
 
-  public pokemonSearched?: PokemonInterface;
+  public pokemonSearched!: PokemonInterface;
+  public pokemonImage!: string;
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -19,14 +20,17 @@ export class MainPageComponent {
     const termSearch = name.toLowerCase()
 
     this.pokemonService.searchPokemonByName(termSearch)
-      .subscribe(({ id, location_area_encounters, name, order, types }) => {
+      .subscribe(({ id, location_area_encounters, name, order, sprites, types }) => {
         this.pokemonSearched = {
           id: id,
           location_area_encounters: location_area_encounters,
           name: name,
           order: order,
+          sprites: sprites,
           types: types,
-        }
+        };
+
+        this.pokemonImage = sprites.front_default;
       });
   }
 

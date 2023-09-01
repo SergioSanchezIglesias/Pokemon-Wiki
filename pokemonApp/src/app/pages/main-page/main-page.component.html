@@ -7,7 +7,9 @@
     placeholder="Busca un Pokemon"
   ></app-search-box>
 
-  <div>
-    <span *ngIf="pokemonSearched">{{ pokemonSearched | json }}</span>
+  <div class="row">
+    <div *ngIf="pokemonSearched" class="col-xl-4 col-sm-6 col-xs-12">
+      <app-card [pokemon]="pokemonSearched" [pokemonImage]="pokemonImage"></app-card>
+    </div>
   </div>
 </div>
