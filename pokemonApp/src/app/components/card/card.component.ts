@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { PokemonInterface } from 'src/app/interfaces/pokemon.interface';
+import { TiposPokemon } from 'src/app/interfaces/tipos-pokemon.interface';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-card',
@@ -8,20 +10,11 @@ import { PokemonInterface } from 'src/app/interfaces/pokemon.interface';
 })
 export class CardComponent {
 
-  private tipoUrl?: string;
-
   constructor() { }
 
   @Input() pokemon!: PokemonInterface;
-  @Input() pokemonImage!: string
+  @Input() pokemonImage!: string;
 
-  getTipos() {
-    if (this.pokemon.types) {
-      // this.pokemon.types.forEach((type) => {
-      //   console.log(type.type.url);
-      // });
-      console.log(this.pokemon.types);
-    }
-  }
+  
 
 }

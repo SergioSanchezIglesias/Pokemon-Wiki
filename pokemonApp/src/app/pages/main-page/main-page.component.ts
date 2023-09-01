@@ -12,6 +12,7 @@ export class MainPageComponent {
 
   public pokemonSearched!: PokemonInterface;
   public pokemonImage!: string;
+  public pokemonType!: string[];
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -31,7 +32,30 @@ export class MainPageComponent {
         };
 
         this.pokemonImage = sprites.front_default;
+        this.pokemonType = this.getTipos();
+        this.searchTypeByUrl(this.pokemonType);
       });
+  }
+  
+
+  getTipos(): string[] {
+
+    let arrayAux: string[] = [];
+
+    if (this.pokemonSearched.types) {
+      this.pokemonSearched.types.forEach((type) => {
+        arrayAux.push(type.type.url);
+      });
+    }
+    return arrayAux;
+  }
+
+  searchTypeByUrl(url: string[]): void {
+    // TODO: Hacer un forEach sobre el array pokemonTypes para traernos lo que nos interesa de cada tipo
+    this.pokemonService.searchPokemonTypeByUrl(url[0])
+    .subscribe((resp) => {
+      console.log(resp);
+    })
   }
 
 }
