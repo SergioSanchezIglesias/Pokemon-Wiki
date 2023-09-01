@@ -9,7 +9,17 @@
 
   <div class="row">
     <div *ngIf="pokemonSearched" class="col-xl-4 col-sm-6 col-xs-12">
-      <app-card [pokemon]="pokemonSearched" [pokemonImage]="pokemonImage"></app-card>
+      <app-card
+        [pokemon]="pokemonSearched"
+        [pokemonImage]="pokemonImage"
+      ></app-card>
+    </div>
+  </div>
+
+  <div class="col">
+    <div *ngIf="pokemonSearched" class="col-xl-4 col-sm-6 col-xs-12">
+      <app-pokemon-type-card [pokemonType]="pokemonType">
+      </app-pokemon-type-card>
     </div>
   </div>
 </div>

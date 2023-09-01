@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
 import { CardComponent } from './components/card/card.component';
+import { PokemonTypeCardComponent } from './components/pokemon-type-card/pokemon-type-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     SearchBoxComponent,
-    CardComponent
+    CardComponent,
+    PokemonTypeCardComponent
   ],
   imports: [
     BrowserModule,
