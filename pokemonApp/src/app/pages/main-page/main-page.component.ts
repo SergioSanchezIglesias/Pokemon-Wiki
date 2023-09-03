@@ -13,8 +13,10 @@ export class MainPageComponent {
 
   public pokemonSearched!: PokemonInterface;
   public pokemonImage!: string;
-  private pokemonUrlType!: string[];
   public pokemonType!: TiposPokemon;
+  public pokemonDamages!: string[];
+
+  private pokemonUrlType!: string[];
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -38,8 +40,8 @@ export class MainPageComponent {
         this.pokemonImage = sprites.front_default;
         this.pokemonUrlType = this.getTipos();
 
-        // TODO: Sería lo idóneo, pero de momento no sabría como.
-        //this.searchTypeByUrl(this.pokemonUrlType);
+        // TODO: TENGO QUE HACER UN FOREACH DE CADA pokemonUrlType Y PENSAR COMO RELLENAR LOS OBJETOS PARA PASARSELOS AL OTRO COMPONENTE
+        console.log(this.pokemonUrlType);
 
         //! Obtengo el nombre del tipo (inglés y otros idiomas en variable names) y contra que es fuerte y débil
         this.pokemonService.searchPokemonTypeByUrl(this.pokemonUrlType[0])
@@ -49,7 +51,7 @@ export class MainPageComponent {
               name: name,
               names: names
             };
-            console.log(names)
+            this.pokemonDamages = Object.keys(damage_relations);
           });
       });
   }
