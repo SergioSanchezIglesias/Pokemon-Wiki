@@ -1,24 +1,29 @@
 <div class="accordion" id="accordionExample">
-  <div class="accordion-item">
+  <div
+    class="accordion-item"
+    *ngFor="let name of pokemonTypeName; let i = index"
+  >
     <h2 class="accordion-header">
       <button
-        *ngIf="pokemonType && pokemonType.names"
+        *ngIf="pokemonTypeName"
         class="accordion-button"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#collapseOne"
         aria-expanded="false"
         aria-controls="collapseOne"
+        [attr.data-bs-target]="'#collapseOne' + i"
       >
-        {{ pokemonType.names[5].name }}
+        {{ name }}
       </button>
     </h2>
     <div
       id="collapseOne"
       class="accordion-collapse collapse"
       data-bs-parent="#accordionExample"
+      [id]="'collapseOne' + i"
     >
-      <div class="accordion-body" *ngIf="pokemonType">
+      <div class="accordion-body" *ngIf="pokemonTypeName">
         <div class="accordion" id="sub-accordionExample">
           <div
             class="accordion-item"

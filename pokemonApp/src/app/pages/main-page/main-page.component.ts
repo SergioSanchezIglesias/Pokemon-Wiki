@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PokemonInterface } from 'src/app/interfaces/pokemon.interface';
-import { TiposPokemon } from 'src/app/interfaces/tipos-pokemon.interface';
+import { Name, TiposPokemon } from 'src/app/interfaces/tipos-pokemon.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 
@@ -13,8 +13,8 @@ export class MainPageComponent {
 
   public pokemonSearched!: PokemonInterface;
   public pokemonImage!: string;
-  public pokemonType!: TiposPokemon;
   public pokemonDamages!: string[];
+  public pokemonTypeName: string[] = [];
 
   private pokemonUrlType!: string[];
 
@@ -40,19 +40,15 @@ export class MainPageComponent {
         this.pokemonImage = sprites.front_default;
         this.pokemonUrlType = this.getTipos();
 
-        // TODO: TENGO QUE HACER UN FOREACH DE CADA pokemonUrlType Y PENSAR COMO RELLENAR LOS OBJETOS PARA PASARSELOS AL OTRO COMPONENTE
-        console.log(this.pokemonUrlType);
-
-        //! Obtengo el nombre del tipo (inglés y otros idiomas en variable names) y contra que es fuerte y débil
-        this.pokemonService.searchPokemonTypeByUrl(this.pokemonUrlType[0])
-          .subscribe(({ damage_relations, name, names }) => {
-            this.pokemonType = {
-              damage_relations: damage_relations,
-              name: name,
-              names: names
-            };
-            this.pokemonDamages = Object.keys(damage_relations);
-          });
+        this.pokemonUrlType.forEach((type) => {
+          //! Obtengo el nombre del tipo (inglés y otros idiomas en variable names) y contra que es fuerte y débil
+          this.pokemonService.searchPokemonTypeByUrl(type)
+            .subscribe(({ damage_relations, names }) => {
+              this.pokemonTypeName.push(names[5].name);
+              this.pokemonDamages = Object.keys(damage_relations);
+              console.log(this.pokemonDamages);
+            });
+        })
       });
   }
 

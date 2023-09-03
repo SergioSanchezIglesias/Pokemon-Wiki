@@ -10,7 +10,7 @@ export class PokemonTypeCardComponent {
 
   constructor() { }
 
-   @Input() pokemonType!: TiposPokemon;
    @Input() pokemonDamages!: string[];
+   @Input() pokemonTypeName!: string[];
 
 }
