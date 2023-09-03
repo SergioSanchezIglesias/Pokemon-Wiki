@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PokemonInterface } from 'src/app/interfaces/pokemon.interface';
-import { Name, TiposPokemon } from 'src/app/interfaces/tipos-pokemon.interface';
+import { DamageRelations, Name, TiposPokemon } from 'src/app/interfaces/tipos-pokemon.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 
@@ -15,6 +15,7 @@ export class MainPageComponent {
   public pokemonImage!: string;
   public pokemonDamages!: string[];
   public pokemonTypeName: string[] = [];
+  public pokemonTypesDamage: DamageRelations[] = [];
 
   private pokemonUrlType!: string[];
 
@@ -46,7 +47,7 @@ export class MainPageComponent {
             .subscribe(({ damage_relations, names }) => {
               this.pokemonTypeName.push(names[5].name);
               this.pokemonDamages = Object.keys(damage_relations);
-              console.log(this.pokemonDamages);
+              this.pokemonTypesDamage.push(damage_relations);
             });
         })
       });

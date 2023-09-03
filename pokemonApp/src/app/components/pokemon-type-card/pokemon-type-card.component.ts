@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TiposPokemon } from 'src/app/interfaces/tipos-pokemon.interface';
+import { DamageRelations } from 'src/app/interfaces/tipos-pokemon.interface';
 
 @Component({
   selector: 'app-pokemon-type-card',
@@ -12,5 +12,6 @@ export class PokemonTypeCardComponent {
 
    @Input() pokemonDamages!: string[];
    @Input() pokemonTypeName!: string[];
+   @Input() pokemonTypesDamage!: DamageRelations[];
 
 }
