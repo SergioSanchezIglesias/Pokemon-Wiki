@@ -41,13 +41,17 @@ export class MainPageComponent {
         this.pokemonImage = sprites.front_default;
         this.pokemonUrlType = this.getTipos();
 
+        let auxType: string[] = [];
+
         this.pokemonUrlType.forEach((type) => {
           //! Obtengo el nombre del tipo (inglés y otros idiomas en variable names) y contra que es fuerte y débil
           this.pokemonService.searchPokemonTypeByUrl(type)
             .subscribe(({ damage_relations, names }) => {
-              this.pokemonTypeName.push(names[5].name);
+              auxType.push(names[5].name);
+              this.pokemonTypeName = auxType;
               this.pokemonDamages = Object.keys(damage_relations);
               this.pokemonTypesDamage.push(damage_relations);
+              console.log(this.pokemonTypesDamage);
             });
         })
       });
