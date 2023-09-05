@@ -47,7 +47,16 @@
                 [attr.aria-labelledby]="'heading' + i"
                 [attr.data-bs-parent]="'#accordionExample' + i"
               >
-                <div class="accordion-body">Holaaa</div>
+                <div class="accordion-body">
+                  <ul class="list-group">
+                    <li
+                      class="list-group-item"
+                      *ngFor="let damage of pokemonTypesDamage"
+                    >
+                      {{ damage }}
+                    </li>
+                  </ul>
+                </div>
               </div>
             </h2>
           </div>
