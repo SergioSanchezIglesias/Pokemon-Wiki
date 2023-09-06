@@ -71,18 +71,4 @@ export class MainPageComponent {
     }
     return arrayAux;
   }
-
-  // searchTypeByUrl(url: string[]): void {
-
-  //   // TODO: Hacer un forEach sobre el array pokemonTypes para traernos lo que nos interesa de cada tipo
-  //   this.pokemonService.searchPokemonTypeByUrl(url[0])
-  //     .subscribe(({ damage_relations, name, names }) => {
-  //       this.pokemonType = {
-  //         damage_relations: damage_relations,
-  //         name: name,
-  //         names: names
-  //       };
-  //     });
-  // }
-
 }
