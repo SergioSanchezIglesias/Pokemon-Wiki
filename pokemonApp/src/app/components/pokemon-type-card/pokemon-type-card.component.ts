@@ -10,8 +10,6 @@ export class PokemonTypeCardComponent {
 
   constructor() { }
 
-   @Input() pokemonDamages!: string[];
    @Input() pokemonTypeName!: string[];
-   @Input() pokemonTypesDamage!: DamageRelations[];
 
 }

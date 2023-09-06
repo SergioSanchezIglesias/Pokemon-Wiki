@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PokemonInterface } from 'src/app/interfaces/pokemon.interface';
-import { DamageRelations, Name, TiposPokemon } from 'src/app/interfaces/tipos-pokemon.interface';
+import { DamageRelations, Generation } from 'src/app/interfaces/tipos-pokemon.interface';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 
@@ -13,9 +13,17 @@ export class MainPageComponent {
 
   public pokemonSearched!: PokemonInterface;
   public pokemonImage!: string;
-  public pokemonDamages!: string[];
   public pokemonTypeName: string[] = [];
-  public pokemonTypesDamage: DamageRelations[] = [];
+
+  public arrayDoubleDamageFrom: Generation[] = [];
+  public arrayDoubleDamageto: Generation[] = [];
+  public arrayHalfDamageFrom: Generation[] = [];
+  public arrayHalfDamageTo: Generation[] = [];
+  public arrayNoDamageFrom: Generation[] = [];
+  public arrayNoDamageTo: Generation[] = [];
+
+
+
 
   private pokemonUrlType!: string[];
 
@@ -51,9 +59,9 @@ export class MainPageComponent {
               auxType.push(names[5].name);
               auxDamage.push(damage_relations);
               this.pokemonTypeName = auxType;
-              this.pokemonTypesDamage = auxDamage;
-              this.pokemonDamages = Object.keys(damage_relations);
-              console.log(this.pokemonTypesDamage);
+              damage_relations.double_damage_from.forEach((damage) => {
+                this.arrayDoubleDamageFrom.push(damage);
+              });
             });
         })
       });

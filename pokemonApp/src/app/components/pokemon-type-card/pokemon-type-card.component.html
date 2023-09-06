@@ -25,11 +25,10 @@
     >
       <div class="accordion-body" *ngIf="pokemonTypeName">
         <div class="accordion" id="sub-accordionExample">
-          <div
-            class="accordion-item"
-            *ngFor="let name of pokemonDamages; let i = index"
-          >
+          <div class="accordion-item">
             <h2 class="accordion-header" id="heading{{ i }}">
+
+              <!-- PRIMER BOTÓN-->
               <button
                 class="accordion-button"
                 type="button"
@@ -38,7 +37,7 @@
                 aria-expanded="false"
                 [attr.aria-controls]="'collapse' + i"
               >
-                {{ name }}
+                Doble daño recibido
               </button>
 
               <div
@@ -47,16 +46,112 @@
                 [attr.aria-labelledby]="'heading' + i"
                 [attr.data-bs-parent]="'#accordionExample' + i"
               >
-                <div class="accordion-body">
-                  <ul class="list-group">
-                    <li
-                      class="list-group-item"
-                      *ngFor="let damage of pokemonTypesDamage"
-                    >
-                      {{ damage }}
-                    </li>
-                  </ul>
-                </div>
+                <div class="accordion-body">Hola</div>
+              </div>
+
+              <!-- SEGUNDO BOTÓN -->
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#collapseSecondary' + i"
+                aria-expanded="false"
+                [attr.aria-controls]="'collapse' + i"
+              >
+                Doble daño producido
+              </button>
+
+              <div
+                [id]="'collapseSecondary' + i"
+                class="accordion-collapse collapse"
+                [attr.aria-labelledby]="'heading' + i"
+                [attr.data-bs-parent]="'#accordionExample' + i"
+              >
+                <div class="accordion-body">Hola</div>
+              </div>
+
+              <!-- TERCER BOTÓN-->
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#collapseThird' + i"
+                aria-expanded="false"
+                [attr.aria-controls]="'collapse' + i"
+              >
+                Mitad de daño recibido
+              </button>
+
+              <div
+                [id]="'collapseThird' + i"
+                class="accordion-collapse collapse"
+                [attr.aria-labelledby]="'heading' + i"
+                [attr.data-bs-parent]="'#accordionExample' + i"
+              >
+                <div class="accordion-body">Hola</div>
+              </div>
+
+              <!-- CUARTO BOTÓN -->
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#collapseFourth' + i"
+                aria-expanded="false"
+                [attr.aria-controls]="'collapse' + i"
+              >
+                Mitad de daño producido
+              </button>
+
+              <div
+                [id]="'collapseFourth' + i"
+                class="accordion-collapse collapse"
+                [attr.aria-labelledby]="'heading' + i"
+                [attr.data-bs-parent]="'#accordionExample' + i"
+              >
+                <div class="accordion-body">Hola</div>
+              </div>
+
+              <!-- QUINTO BOTÓN -->
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#collapseFifth' + i"
+                aria-expanded="false"
+                [attr.aria-controls]="'collapse' + i"
+              >
+                No hay daño recibido
+              </button>
+
+              <div
+                [id]="'collapseFifth' + i"
+                class="accordion-collapse collapse"
+                [attr.aria-labelledby]="'heading' + i"
+                [attr.data-bs-parent]="'#accordionExample' + i"
+              >
+                <div class="accordion-body">Hola</div>
+              </div>
+
+              <!-- SEXTO BOTÓN -->
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#collapseSixth' + i"
+                aria-expanded="false"
+                [attr.aria-controls]="'collapse' + i"
+              >
+                No hay daño producido
+              </button>
+
+              <div
+                [id]="'collapseSixth' + i"
+                class="accordion-collapse collapse"
+                [attr.aria-labelledby]="'heading' + i"
+                [attr.data-bs-parent]="'#accordionExample' + i"
+              >
+                <div class="accordion-body">Hola</div>
               </div>
             </h2>
           </div>
