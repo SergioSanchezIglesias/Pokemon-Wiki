@@ -18,6 +18,12 @@
     <div *ngIf="pokemonSearched" class="col-xl-4 col-sm-6 col-xs-12 mt-5">
       <app-pokemon-type-card
         [pokemonTypeName]="pokemonTypeName"
+        [arrayDoubleDamageFrom] = "arrayDoubleDamageFrom"
+        [arrayDoubleDamageTo] = "arrayDoubleDamageTo"
+        [arrayHalfDamageFrom] = "arrayHalfDamageFrom"
+        [arrayHalfDamageTo] = "arrayHalfDamageTo"
+        [arrayNoDamageFrom] = "arrayNoDamageFrom"
+        [arrayNoDamageTo] = "arrayNoDamageTo"
       >
       </app-pokemon-type-card>
     </div>

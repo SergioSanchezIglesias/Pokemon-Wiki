@@ -51,6 +51,14 @@ export class MainPageComponent {
         this.pokemonImage = sprites.front_default;
         this.pokemonUrlType = this.getTipos();
 
+        // Limpieza de los arrays para que no queden datos residuales
+        this.arrayDoubleDamageFrom = []; 
+        this.arrayDoubleDamageTo = [] 
+        this.arrayHalfDamageFrom = []; 
+        this.arrayHalfDamageTo = [] 
+        this.arrayNoDamageFrom = []; 
+        this.arrayNoDamageTo = []; 
+
         let auxType: string[] = [];
         let auxPokemon: PokemonTypeDamage;
 
@@ -73,15 +81,15 @@ export class MainPageComponent {
               auxPokemon = this.completeArrays(names[5].name, 'half_damage_from', damage_relations);
               this.arrayHalfDamageFrom.push(auxPokemon);
 
-              // // Array HalfDamageTo
+              // Array HalfDamageTo
               auxPokemon = this.completeArrays(names[5].name, 'half_damage_to', damage_relations);
               this.arrayHalfDamageTo.push(auxPokemon);
 
-              // // Array NoDamageFrom
+              // Array NoDamageFrom
               auxPokemon = this.completeArrays(names[5].name, 'no_damage_from', damage_relations);
               this.arrayNoDamageFrom.push(auxPokemon);
 
-              // // Array NoDamageTo
+              // Array NoDamageTo
               auxPokemon = this.completeArrays(names[5].name, 'no_damage_to', damage_relations);
               this.arrayNoDamageTo.push(auxPokemon);
 

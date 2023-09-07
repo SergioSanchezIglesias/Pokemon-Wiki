@@ -46,7 +46,15 @@
                 [attr.aria-labelledby]="'heading' + i"
                 [attr.data-bs-parent]="'#accordionExample' + i"
               >
-                <div class="accordion-body">Hola</div>
+                <div class="accordion-body">
+                  <div *ngFor="let item of arrayDoubleDamageFrom">
+                    <div *ngIf="item.tipo_ataque === name">
+                      <p *ngFor="let tipoAtaque of item.ataques">
+                        {{ tipoAtaque }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <!-- SEGUNDO BOTÓN -->
@@ -67,7 +75,15 @@
                 [attr.aria-labelledby]="'heading' + i"
                 [attr.data-bs-parent]="'#accordionExample' + i"
               >
-                <div class="accordion-body">Hola</div>
+              <div class="accordion-body">
+                <div *ngFor="let item of arrayDoubleDamageTo">
+                  <div *ngIf="item.tipo_ataque === name">
+                    <p *ngFor="let tipoAtaque of item.ataques">
+                      {{ tipoAtaque }}
+                    </p>
+                  </div>
+                </div>
+              </div>
               </div>
 
               <!-- TERCER BOTÓN-->
@@ -88,7 +104,15 @@
                 [attr.aria-labelledby]="'heading' + i"
                 [attr.data-bs-parent]="'#accordionExample' + i"
               >
-                <div class="accordion-body">Hola</div>
+              <div class="accordion-body">
+                <div *ngFor="let item of arrayHalfDamageFrom">
+                  <div *ngIf="item.tipo_ataque === name">
+                    <p *ngFor="let tipoAtaque of item.ataques">
+                      {{ tipoAtaque }}
+                    </p>
+                  </div>
+                </div>
+              </div>
               </div>
 
               <!-- CUARTO BOTÓN -->
@@ -109,7 +133,15 @@
                 [attr.aria-labelledby]="'heading' + i"
                 [attr.data-bs-parent]="'#accordionExample' + i"
               >
-                <div class="accordion-body">Hola</div>
+              <div class="accordion-body">
+                <div *ngFor="let item of arrayHalfDamageTo">
+                  <div *ngIf="item.tipo_ataque === name">
+                    <p *ngFor="let tipoAtaque of item.ataques">
+                      {{ tipoAtaque }}
+                    </p>
+                  </div>
+                </div>
+              </div>
               </div>
 
               <!-- QUINTO BOTÓN -->
@@ -130,7 +162,15 @@
                 [attr.aria-labelledby]="'heading' + i"
                 [attr.data-bs-parent]="'#accordionExample' + i"
               >
-                <div class="accordion-body">Hola</div>
+              <div class="accordion-body">
+                <div *ngFor="let item of arrayNoDamageFrom">
+                  <div *ngIf="item.tipo_ataque === name">
+                    <p *ngFor="let tipoAtaque of item.ataques">
+                      {{ tipoAtaque }}
+                    </p>
+                  </div>
+                </div>
+              </div>
               </div>
 
               <!-- SEXTO BOTÓN -->
@@ -151,7 +191,15 @@
                 [attr.aria-labelledby]="'heading' + i"
                 [attr.data-bs-parent]="'#accordionExample' + i"
               >
-                <div class="accordion-body">Hola</div>
+              <div class="accordion-body">
+                <div *ngFor="let item of arrayNoDamageTo">
+                  <div *ngIf="item.tipo_ataque === name">
+                    <p *ngFor="let tipoAtaque of item.ataques">
+                      {{ tipoAtaque }}
+                    </p>
+                  </div>
+                </div>
+              </div>
               </div>
             </h2>
           </div>
