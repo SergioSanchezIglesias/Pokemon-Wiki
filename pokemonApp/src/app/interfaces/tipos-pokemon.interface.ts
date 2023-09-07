@@ -6,6 +6,7 @@ export interface TiposPokemon {
 }
 
 export interface DamageRelations {
+    [key: string]: any,
     double_damage_from: Generation[];
     double_damage_to: any[];
     half_damage_from: any[];

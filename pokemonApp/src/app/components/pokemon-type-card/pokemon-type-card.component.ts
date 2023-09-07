@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { DamageRelations } from 'src/app/interfaces/tipos-pokemon.interface';
 
 @Component({
   selector: 'app-pokemon-type-card',

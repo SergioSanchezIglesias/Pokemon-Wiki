@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { PokemonInterface } from 'src/app/interfaces/pokemon.interface';
-import { DamageRelations, Generation } from 'src/app/interfaces/tipos-pokemon.interface';
+
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { DamageRelations, Generation, PokemonInterface, PokemonTypeDamage } from 'src/app/interfaces';
+
+
 
 
 @Component({
@@ -15,12 +17,12 @@ export class MainPageComponent {
   public pokemonImage!: string;
   public pokemonTypeName: string[] = [];
 
-  public arrayDoubleDamageFrom: Generation[] = [];
-  public arrayDoubleDamageto: Generation[] = [];
-  public arrayHalfDamageFrom: Generation[] = [];
-  public arrayHalfDamageTo: Generation[] = [];
-  public arrayNoDamageFrom: Generation[] = [];
-  public arrayNoDamageTo: Generation[] = [];
+  public arrayDoubleDamageFrom: PokemonTypeDamage[] = [];
+  public arrayDoubleDamageTo: PokemonTypeDamage[] = [];
+  public arrayHalfDamageFrom: PokemonTypeDamage[] = [];
+  public arrayHalfDamageTo: PokemonTypeDamage[] = [];
+  public arrayNoDamageFrom: PokemonTypeDamage[] = [];
+  public arrayNoDamageTo: PokemonTypeDamage[] = [];
 
 
 
@@ -50,18 +52,39 @@ export class MainPageComponent {
         this.pokemonUrlType = this.getTipos();
 
         let auxType: string[] = [];
-        let auxDamage: DamageRelations[] = [];
+        let auxPokemon: PokemonTypeDamage;
 
         this.pokemonUrlType.forEach((type) => {
           //! Obtengo el nombre del tipo (inglés y otros idiomas en variable names) y contra que es fuerte y débil
           this.pokemonService.searchPokemonTypeByUrl(type)
             .subscribe(({ damage_relations, names }) => {
               auxType.push(names[5].name);
-              auxDamage.push(damage_relations);
               this.pokemonTypeName = auxType;
-              damage_relations.double_damage_from.forEach((damage) => {
-                this.arrayDoubleDamageFrom.push(damage);
-              });
+
+              // Array DoubleDamageFrom
+              auxPokemon = this.completeArrays(names[5].name, 'double_damage_from', damage_relations);
+              this.arrayDoubleDamageFrom.push(auxPokemon);
+
+              // Array DoubleDamageTo
+              auxPokemon = this.completeArrays(names[5].name, 'double_damage_to', damage_relations);
+              this.arrayDoubleDamageTo.push(auxPokemon);
+
+              // Array HalfDamageFrom
+              auxPokemon = this.completeArrays(names[5].name, 'half_damage_from', damage_relations);
+              this.arrayHalfDamageFrom.push(auxPokemon);
+
+              // // Array HalfDamageTo
+              auxPokemon = this.completeArrays(names[5].name, 'half_damage_to', damage_relations);
+              this.arrayHalfDamageTo.push(auxPokemon);
+
+              // // Array NoDamageFrom
+              auxPokemon = this.completeArrays(names[5].name, 'no_damage_from', damage_relations);
+              this.arrayNoDamageFrom.push(auxPokemon);
+
+              // // Array NoDamageTo
+              auxPokemon = this.completeArrays(names[5].name, 'no_damage_to', damage_relations);
+              this.arrayNoDamageTo.push(auxPokemon);
+
             });
         })
       });
@@ -79,4 +102,19 @@ export class MainPageComponent {
     }
     return arrayAux;
   }
+
+  completeArrays(typeName: string, typeAttack: string, damage_relations: DamageRelations): PokemonTypeDamage {
+
+    let auxPokemon: PokemonTypeDamage;
+
+    auxPokemon = { tipo_ataque: typeName, ataques: [] };
+    damage_relations[typeAttack].forEach((attack: Generation) => {
+      auxPokemon.ataques.push(attack.name);
+    });
+
+    return auxPokemon;
+  }
+
 }
+
+
